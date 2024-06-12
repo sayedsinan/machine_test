@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "972001079189",
+    "project_id": "task-treck-75d7c",
+    "storage_bucket": "task-treck-75d7c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:972001079189:android:8612ef41c96d281182509c",
+        "android_client_info": {
+          "package_name": "com.example.machine_test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtwYBd1NOWPDSeU3FQE_bcy2CqpHXxebU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
