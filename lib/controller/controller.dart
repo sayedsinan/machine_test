@@ -31,7 +31,9 @@ class AuthController extends GetxController {
       await auth.createUserWithEmailAndPassword(
           email: email, password: password);
     } catch (e) {
-      Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(
+          'Error', 'Please check if you have enterd correct credentials',
+          snackPosition: SnackPosition.BOTTOM);
     }
   }
 
@@ -39,7 +41,8 @@ class AuthController extends GetxController {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
     } catch (e) {
-      Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar('Error', 'Please check your credentials',
+          snackPosition: SnackPosition.BOTTOM);
     }
   }
 

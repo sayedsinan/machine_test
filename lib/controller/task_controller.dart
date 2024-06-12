@@ -53,15 +53,14 @@ class TaskController extends GetxController {
         android: androidPlatformChannelSpecifics,
         iOS: iOSPlatformChannelSpecifics);
 
-    //   await flutterLocalNotificationsPlugin.schedule(
-    //     task.id.hashCode,
-    //     'Task Reminder',
-    //     'Your task "${task.title}" is due in 10 minutes',
-    //     scheduledNotificationDateTime,
-    //     platformChannelSpecifics,
-    //     uiLocalNotificationDateInterpretation:
-    //         UILocalNotificationDateInterpretation.absoluteTime,
-    //   );
-    // }
+    // await flutterLocalNotificationsPlugin.schedule(
+    //   task.id.hashCode,
+    //   'Task Reminder',
+    //   'Your task "${task.title}" is due in 10 minutes',
+    //   scheduledNotificationDateTime,
+    //   platformChannelSpecifics,
+    //   uiLocalNotificationDateInterpretation:
+    //       UILocalNotificationDateInterpretation.absoluteTime,
+    // );
   }
 }
