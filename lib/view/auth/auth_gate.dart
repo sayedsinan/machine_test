@@ -28,13 +28,13 @@ class AuthScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CircleAvatar(
+                const CircleAvatar(
                   radius: 70,
                   backgroundImage: AssetImage(
                     'assets/images.png',
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 MYTextfield(
@@ -62,7 +62,7 @@ class AuthScreen extends StatelessWidget {
                     const Text(
                       'Dont have an account?',
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     GestureDetector(

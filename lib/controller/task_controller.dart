@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:machine_test/model/task.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
 
 class TaskController extends GetxController {
@@ -45,11 +46,18 @@ class TaskController extends GetxController {
   }
 
   void scheduleTaskNotification(Task task) async {
+    // Initialize time zones (ensure this is done early in your app, possibly in main.dart)
+    // tz.initializeTimeZones();
+    tz.setLocalLocation(
+        tz.getLocation('your_timezone_name')); // Set your desired time zone
+
+    // Calculate the notification date and time (10 minutes before task deadline)
     var scheduledNotificationDateTime = tz.TZDateTime.from(
       task.deadline.subtract(Duration(minutes: 10)),
       tz.local,
     );
 
+    // Define platform-specific notification details
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
       'task_channel',
       'Task Notifications',
@@ -65,6 +73,7 @@ class TaskController extends GetxController {
       iOS: iOSPlatformChannelSpecifics,
     );
 
+    // Schedule the notification
     await flutterLocalNotificationsPlugin.zonedSchedule(
       task.id.hashCode,
       'Task Reminder',

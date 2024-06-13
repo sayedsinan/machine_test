@@ -17,22 +17,18 @@ class TaskListScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Obx(
-          () => Text(
-            'Tasks',
-            style: myStyle(
-              fontSize: 20,
-              color: themeController.isDarkMode.value
-                  ? Colors.white
-                  : Colors.black,
+          () => Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'Tasks',
+              style: myStyle(
+                fontSize: 25,
+                color: themeController.isDarkMode.value
+                    ? Colors.white
+                    : Colors.black,
+              ),
             ),
           ),
-        ),
-        leading: IconButton(
-          icon: const Icon(Icons.lightbulb_outline), // Icon for toggling theme
-          onPressed: () {
-            themeController
-                .toggleTheme(!themeController.isDarkMode.value); // Toggle theme
-          },
         ),
         actions: [
           IconButton(
@@ -42,6 +38,12 @@ class TaskListScreen extends StatelessWidget {
             },
           ),
         ],
+        leading: Obx(() => Switch(
+              value: themeController.isDarkMode.value,
+              onChanged: (value) {
+                themeController.toggleTheme(value);
+              },
+            )),
       ),
       body: Obx(() {
         if (taskController.tasks.isEmpty) {
@@ -63,7 +65,7 @@ class TaskListScreen extends StatelessWidget {
               direction: DismissDirection.horizontal,
               background: Container(
                 color: Colors.blue,
-                child: const Icon(
+                child: Icon(
                   Icons.edit,
                   color: Colors.white,
                 ),

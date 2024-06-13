@@ -85,7 +85,7 @@ class SignUp extends StatelessWidget {
                     onTap: () {
                       Get.off(AuthScreen());
                     },
-                    child: Text(
+                    child: const Text(
                       'Login',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ))

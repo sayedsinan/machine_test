@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
           themeController.isDarkMode.value ? ThemeMode.dark : ThemeMode.light,
       darkTheme: ThemeData.dark(),
       title: 'Task Track',
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }
