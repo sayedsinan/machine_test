@@ -23,7 +23,7 @@ Before you begin, ensure you have met the following requirements:
 ### Clone the repository
 
 ```bash
-git clone https://github.com/your-username/task-track.git
+git clone https://github.com/sayedsinan/task-track.git
 cd task-track
 ```
 
