@@ -2,29 +2,55 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:machine_test/controller/controller.dart';
 import 'package:machine_test/controller/task_controller.dart';
+import 'package:machine_test/controller/theme_controller.dart';
 import 'package:machine_test/view/screen/task_form.dart';
+import 'package:machine_test/view/style/style.dart';
 
 class TaskListScreen extends StatelessWidget {
   final TaskController taskController = Get.find<TaskController>();
-  final controller = Get.find<AuthController>();
+  final AuthController authController = Get.find<AuthController>();
+  final ThemeController themeController = Get.find<ThemeController>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tasks'),
+        centerTitle: true,
+        title: Obx(
+          () => Text(
+            'Tasks',
+            style: myStyle(
+              fontSize: 20,
+              color: themeController.isDarkMode.value
+                  ? Colors.white
+                  : Colors.black,
+            ),
+          ),
+        ),
+        leading: IconButton(
+          icon: Icon(Icons.lightbulb_outline), // Icon for toggling theme
+          onPressed: () {
+            themeController
+                .toggleTheme(!themeController.isDarkMode.value); // Toggle theme
+          },
+        ),
         actions: [
           IconButton(
             icon: Icon(Icons.door_back_door_sharp),
             onPressed: () {
-              controller.signOut();
+              authController.signOut();
             },
           ),
         ],
       ),
       body: Obx(() {
         if (taskController.tasks.isEmpty) {
-          return Center(child: Text('No tasks yet.'));
+          return Center(
+            child: Text(
+              'No tasks yet.',
+              style: myStyle(fontSize: 15),
+            ),
+          );
         }
 
         return ListView.builder(
@@ -102,7 +128,7 @@ class TaskListScreen extends StatelessWidget {
                   ),
                 ),
                 subtitle:
-                    task.description != null ? Text(task.description) : null,
+                    task.description != null ? Text(task.description!) : null,
                 trailing: Checkbox(
                   value: task.isCompleted,
                   onChanged: (value) {

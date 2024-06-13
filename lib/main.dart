@@ -4,19 +4,21 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:machine_test/controller/controller.dart';
 import 'package:machine_test/controller/task_controller.dart';
+import 'package:machine_test/controller/theme_controller.dart';
 import 'package:machine_test/view/auth/auth_gate.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:timezone/data/latest.dart' as tz;
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 
-// Import the generated file
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  tz.initializeTimeZones();
+
   Get.put(AuthController());
   Get.put(TaskController());
-  runApp(MyApp());
+  Get.put(ThemeController());
 
   var initializationSettingsAndroid =
       AndroidInitializationSettings('@mipmap/ic_launcher');
@@ -25,6 +27,8 @@ void main() async {
       android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
 
   await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -32,7 +36,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.light(),
+      themeMode:
+          themeController.isDarkMode.value ? ThemeMode.dark : ThemeMode.light,
+      darkTheme: ThemeData.dark(),
       title: 'Task Management App',
       home: AuthScreen(),
     );

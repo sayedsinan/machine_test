@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:machine_test/controller/task_controller.dart';
 import 'package:machine_test/model/task.dart';
 
+// ignore: must_be_immutable
 class TaskFormScreen extends StatelessWidget {
   final TaskController taskController = Get.find<TaskController>();
   final Task? task;
