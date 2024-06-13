@@ -14,13 +14,13 @@ class MyButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+        backgroundColor: MaterialStateProperty.all<Color>(Colors.teal),
         padding: MaterialStateProperty.all<EdgeInsets>(
-            EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0)),
+            EdgeInsets.symmetric(horizontal: 100.0, vertical: 12.0)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18.0),
-            side: BorderSide(color: Colors.blue),
+            side: BorderSide(color: Colors.black),
           ),
         ),
         elevation: MaterialStateProperty.all<double>(5.0),

@@ -17,50 +17,67 @@ class AuthScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Task Management App'),
+        centerTitle: true,
+        title: const Text('Task Track'),
         automaticallyImplyLeading: false,
       ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              MYTextfield(
-                hintText: 'E-mail please',
-                controller: emailController,
-              ),
-              MYTextfield(hintText: 'pasword', controller: passwordController),
-              const SizedBox(height: 10),
-              MyButton(
-                  name: 'Login',
-                  onPressed: () {
-                    authController.login(
-                        emailController.text, passwordController.text);
-                  }),
-              const SizedBox(height: 20),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Dont have an account?',
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  radius: 70,
+                  backgroundImage: AssetImage(
+                    'assets/images.png',
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  GestureDetector(
-                      onTap: () {
-                        Get.to(SignUp());
-                      },
-                      child: Text(
-                        'Sign Up',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
-                      ))
-                ],
-              )
-            ],
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                MYTextfield(
+                  hintText: 'E-mail please',
+                  controller: emailController,
+                  isPassword: false,
+                ),
+                MYTextfield(
+                  hintText: 'pasword',
+                  controller: passwordController,
+                  isPassword: true,
+                ),
+                const SizedBox(height: 10),
+                MyButton(
+                    name: 'Login',
+                    onPressed: () {
+                      authController.login(
+                          emailController.text, passwordController.text);
+                    }),
+                const SizedBox(height: 20),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Dont have an account?',
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    GestureDetector(
+                        onTap: () {
+                          Get.to(const SignUp());
+                        },
+                        child: const Text(
+                          'Sign Up',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        ))
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),

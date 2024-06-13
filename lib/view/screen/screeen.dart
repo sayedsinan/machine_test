@@ -28,7 +28,7 @@ class TaskListScreen extends StatelessWidget {
           ),
         ),
         leading: IconButton(
-          icon: Icon(Icons.lightbulb_outline), // Icon for toggling theme
+          icon: const Icon(Icons.lightbulb_outline), // Icon for toggling theme
           onPressed: () {
             themeController
                 .toggleTheme(!themeController.isDarkMode.value); // Toggle theme
@@ -63,7 +63,7 @@ class TaskListScreen extends StatelessWidget {
               direction: DismissDirection.horizontal,
               background: Container(
                 color: Colors.blue,
-                child: Icon(
+                child: const Icon(
                   Icons.edit,
                   color: Colors.white,
                 ),

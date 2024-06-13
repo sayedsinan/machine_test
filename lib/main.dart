@@ -6,6 +6,7 @@ import 'package:machine_test/controller/controller.dart';
 import 'package:machine_test/controller/task_controller.dart';
 import 'package:machine_test/controller/theme_controller.dart';
 import 'package:machine_test/view/auth/auth_gate.dart';
+import 'package:machine_test/view/screen/splash_screen.dart';
 import 'package:timezone/data/latest.dart' as tz;
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -43,8 +44,8 @@ class MyApp extends StatelessWidget {
       themeMode:
           themeController.isDarkMode.value ? ThemeMode.dark : ThemeMode.light,
       darkTheme: ThemeData.dark(),
-      title: 'Task Management App',
-      home: AuthScreen(),
+      title: 'Task Track',
+      home: SplashScreen(),
     );
   }
 }
